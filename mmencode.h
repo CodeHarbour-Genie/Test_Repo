@@ -4,6 +4,6 @@
 #include <stdio.h>
 
 // function prototype declaration
-int mm_encode(FILE *src, FILE *dst);
+int mm_encode(FILE *src, FILE *dst,FILE *logs);
 
 #endif

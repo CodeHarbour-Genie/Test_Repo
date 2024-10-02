@@ -30,9 +30,12 @@ int main(int argc, char *argv[]) {
     int retval = -1;
     int codec_op = MM_OP_INVALID;
     int opt; 
+    bool enableLogs;
 
     opterr = 0;
     
+   options.logs_stream =  fopen(LOGS_PATH, "w");
+
     if((codec_op = pick_operation(argv[0])) == MM_OP_INVALID) { // this is a good code style
         errno = EINVAL;
         perror("meow/unmeow argv[0] unrecognized!");
@@ -69,10 +72,10 @@ int main(int argc, char *argv[]) {
     
     switch(codec_op) {
     case MM_OP_ENCODE:
-        retval = mm_encode(options.in_stream, options.out_stream);
+        retval = mm_encode(options.in_stream, options.out_stream,options.logs_stream);
         break;
     case MM_OP_DECODE:
-        retval = mm_decode(options.in_stream, options.out_stream);
+        retval = mm_decode(options.in_stream, options.out_stream,options.logs_stream);
         break;
     default:
         retval = -1;

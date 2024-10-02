@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 
-int mm_decode(FILE *src, FILE *dst);
+int mm_decode(FILE *src, FILE *dst, FILE *logs);
 
 #endif

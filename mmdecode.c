@@ -20,14 +20,25 @@ typedef union  {
     unsigned char value;
 } decoded_byte_t ;
 
-int stupid_decode(FILE *src, FILE *dst);
+int stupid_decode(FILE *src, FILE *dst,FILE *logs);
 
-int mm_decode(FILE *src, FILE *dst) {
+int mm_decode(FILE *src, FILE *dst, FILE *logs) {
+    /*START:adding logs*/
+    char logsBuff[50];
+    sprintf(logsBuff,"Enter Function:mm_decode, Line:%d\n", __LINE__);
+    fputs(logsBuff, logs);
+    /*END:adding logs*/
+    
     if (!src || !dst) {
         errno = EINVAL;
         return -1;
     }
 
+    /*START:adding logs*/
+    sprintf(logsBuff,"Exit Function:mm_decode, Line:%d\n", __LINE__);
+    fputs(logsBuff, logs);
+    /*END:adding logs*/
+    
     return stupid_decode(src, dst);
 }
 
